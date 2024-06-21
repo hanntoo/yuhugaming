@@ -71,7 +71,7 @@
                         </td>
                         @empty
                         <tr>
-                            <td colspan="7" class="text-center py-5">"Data Tidak Ada"</td>
+                            <td colspan="7" class="text-center py-5">Data Tidak Ada</td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -83,18 +83,18 @@
 
 <!-- Modal -->
 <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
- <div class="modal-dialog" role="document">
-   <div class="modal-content">
-     <div class="modal-header">
-       <h5 class="modal-title"></h5>
-       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-         <span aria-hidden="true">&times;</span>
-       </button>
-     </div>
-     <div class="modal-body">
-       <i class="fa fa-spinner fa-spin"></i>
-     </div>
-   </div>
- </div>
+    <div class="modal-dialog modal-lg" role="document"> <!-- Tambahkan kelas modal-lg di sini -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

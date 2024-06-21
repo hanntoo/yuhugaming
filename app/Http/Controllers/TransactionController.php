@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use App\Models\Product;
 use Illuminate\Support\Str;
 
@@ -55,7 +56,6 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        // // Validasi data yang diterima
         $request->validate([
             'uuid' => 'required|max:255',
             'name' => 'required|max:255',
@@ -63,25 +63,29 @@ class TransactionController extends Controller
             'phone' => 'required|max:20',
             'transaction_total' => 'required',
             'transaction_status' => 'required',
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1',
         ]);
 
         $product = Product::findOrFail($request->product_id);
 
-        // Periksa apakah quantity produk mencukupi
         if ($product->quantity < $request->quantity) {
             return redirect()->back()->withErrors(['quantity' => 'Quantity of the product is not sufficient.'])->withInput();
         }
 
-        // Kurangi quantity produk
         $product->quantity -= $request->quantity;
         $product->save();
 
-        // Siapkan data untuk disimpan ke transaksi
         $data = $request->all();
         $data['transaction_total'] = $request->price * $request->quantity;
 
-        // Simpan transaksi ke database
-        Transaction::create($data);
+        $transaction = Transaction::create($data);
+
+        TransactionDetail::create([
+            'transaction_id' => $transaction->id,
+            'product_id' => $request->product_id,
+            'quantity' => $request->quantity,
+        ]);
 
         return redirect()->route('transactions.index')->with('success', 'Transaction created successfully.');
     }

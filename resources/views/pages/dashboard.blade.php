@@ -3,12 +3,12 @@
  <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Transactions</h1>
+    <h1 class="h3 mb-2 text-gray-800">Pending Transactions</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="d-sm-flex align-items-center justify-content-between mb-4 card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Transaksi</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Transaksi Pending</h6>
             </div>
 
         <div class="card-body">
@@ -64,7 +64,7 @@
                         </td>
                         @empty
                         <tr>
-                            <td colspan="7" class="text-center py-5">"Data Tidak Ada"</td>
+                            <td colspan="7" class="text-center py-5">Data Tidak Ada</td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -73,19 +73,19 @@
         </div>
         <!-- Modal -->
         <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title"></h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               <i class="fa fa-spinner fa-spin"></i>
-             </div>
-           </div>
-         </div>
+            <div class="modal-dialog modal-lg" role="document"> <!-- Tambahkan kelas modal-lg di sini -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <i class="fa fa-spinner fa-spin"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@ class TransactionDetail extends Model
 {
     use HasFactory;
     use softDeletes;
-    protected $fillable = ['transaction_id', 'product_id'];
+    protected $fillable = ['transaction_id', 'product_id', 'quantity'];
     protected $hidden = [];
 
     public function transaction()

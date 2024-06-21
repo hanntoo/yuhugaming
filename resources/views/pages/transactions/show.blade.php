@@ -17,53 +17,35 @@
     </tr> --}}
     <tr>
         <th>Total Transaksi</th>
-        <td> {{ $item->transaction_total }} </td>
+        <td>Rp @php echo number_format($item->transaction_total,2,",","."); @endphp </td>
     </tr>
     <tr>
         <th>Status</th>
         <td> {{ $item->transaction_status }} </td>
     </tr>
     <tr>
-        <th>Detail Produk</th>
+        <th>Pembelian Produk</th>
         <td>
-            <table class="table table-bordered w-100">
+            <table class="table table-bordered w-100 text-center">
                 <tr>
                     <th>Nama Produk</th>
                     <th>Tipe Produk</th>
                     <th>Harga Produk</th>
+                    <th>Jumlah Produk</th>
                 </tr>
                 @foreach($item->details as $detail)
                 <tr>
                     @if ($detail->product)
                     <td> {{ $detail->product->name }} </td>
                     <td> {{ $detail->product->type }} </td>
-                    <td> {{ $detail->product->price }} </td>
+                    <td>Rp @php echo number_format($detail->product->price,2,",","."); @endphp </td>
+                    <td> {{ $detail->quantity }} </td>
                     @else
-                        <td colspan="3">Produk tidak ada</td>
+                        <td colspan="4">Produk tidak ada</td>
                     @endif
                 </tr>
                 @endforeach
             </table>
-            {{-- <div class="row">
-                <div class="col-4">
-                    <a href="{{ route('transactions.status', $item->id) }}?status=SUCCESS" class="btn btn-success btn-block">
-                        <i class="fa fa-check"></i>
-                        SET SUCCESS
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a href="{{ route('transactions.status', $item->id) }}?status=FAILED" class="btn btn-danger btn-block">
-                        <i class="fa fa-check"></i>
-                        SET GAGAL
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a href="{{ route('transactions.status', $item->id) }}?status=PENDING" class="btn btn-info btn-block">
-                        <i class="fa fa-check"></i>
-                        SET PENDING
-                    </a>
-                </div>
-            </div> --}}
         </td>
     </tr>
 </table>
