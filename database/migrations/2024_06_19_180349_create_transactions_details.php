@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->integer('transaction_id');
             $table->integer('product_id');
+            $table->integer('quantity');
             $table->softDeletes(); //function crud
             $table->timestamps();
         });
