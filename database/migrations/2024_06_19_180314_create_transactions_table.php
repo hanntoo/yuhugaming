@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('address');
             $table->integer('transaction_total');
             $table->string('transaction_status');
             $table->softDeletes(); //function crud
